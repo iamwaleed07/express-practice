@@ -3,6 +3,7 @@ import cors from "cors"
 import cookieParser from "cookie-parser"
 import "dotenv/config"
 import connectDB from "./src/config/db.config.js"
+import baseRouter from "./src/routes/routes.js"
 
 const PORT = process.env.PORT || 4000
 
@@ -18,11 +19,7 @@ app.use(
   })
 )
 
-app.get("/", (req, res) => {
-  res.json({
-    message: "HELLO",
-  })
-})
+baseRouter(app)
 
 connectDB()
   .then(() => {
